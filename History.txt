@@ -1,0 +1,758 @@
+v7.0.0 Unreleased
+
+Removed update_indexed_attributes, update_datastream_attributes, get_values_from_datastream
+
+v6.6.0
+Add _destroy method for building nested forms [Justin Coyne]
+Removed the pid placeholder `__DO_NOT_USE__` [Justin Coyne]
+Allow relationships to accept instances of RDF::URI as their predicates [Justin Coyne]
+Remove internal deprecation [Justin Coyne]
+Gracefully handle an ObjectNotFound in find_all [Justin Coyne]
+Revert "Removed unused code that breaks certain use cases (Fixes #234)." [Jeremy Friesen]
+Removed unset opts parameter from call to reify_solr_results, introduced in PR #236. [David Chandek-Stark]
+Removed unused code that breaks certain use cases (Fixes #234).  [David Chandek-Stark]
+Fix deprecation warning when using the ids setter of a has_many collection relationship that has class_name set to 'ActiveFedora::Base [Justin Coyne]
+Fix deprecation warning when loading a has_many association [Justin Coyne]
+Explicitly set cast to false on reload to avoid deprecation warnings [Justin Coyne]
+Cast relationship results if class is ActiveFedora::Base [Justin Coyne]
+Adding a loop for getting more than solr_page_size (default 200) results in an has and belongs to many association [Carolyn Cole]
+Fixed syntax error on hash [Justin Coyne]
+Set cast parameter to avoid a deprecation warning [Justin Coyne]
+Only deprecate the cast parameter to find when on ActiveFedora::Base [Justin Coyne]
+Deprecate .find's cast default option [Jeremy Friesen]
+Remove outdated fixture loading line from README. [Steven Anderson]
+Support for extended cmodels (read-only) [Steven Anderson]
+Fix tense on deprecation warning [Steven Anderson]
+Fix tense on deprecation warning [Justin Coyne]
+delegate and delegate_to should use 'multiple' rather than 'unique'.  Ref #147 [Justin Coyne]
+Deprecated find(:all), find(:first), find(:last) [Justin Coyne]
+Prevent infinite loop when Fedora and Solr are out of sync (fixes #199) [Michael B. Klein]
+
+v6.5.1 (2013-09-10)
+
+ActiveFedora::Predicates.set_predicates allows you to set predicates
+without wiping out existing configs [Matt Zumwalt]
+
+v6.5.0 (2013-08-28)
+
+An empty query value that is a string should not return all
+[Adam Hallett]
+
+Delegate relation methods to the array [Justin Coyne]
+
+Use an error message that gives a thourough explanation and a
+for a fix [Justin Coyne]
+
+Include ActiveModel::Dirty on Base, call field_will_change! on
+methods, and track changes on save [Chris Colvard]
+
+Rdf terminologies should be inheritable [Justin Coyne]
+
+Raise an error when trying to assign to a delegated attribute that
+been delegated [Justin Coyne]
+
+Added RdfNode::TermProxy.first_or_create [Justin Coyne]
+
+replace method_missing technique in rdf_node with an accessor
+[Justin Coyne]
+
+Add ActiveFedora::Relation#last.  Resolves #184 [Andrew Curley]
+
+RdfNode::TermProxy.build should use the correct class [Justin
+Coyne]
+
+
+v6.4.5 (2013-08-05)
+
+Clear rdf lists and proxies [Justin Coyne]
+
+When defining rdf terminologies you should be able to say 'multivalue: false'
+[Justin Coyne]
+
+Created RdfList#to_ary [Justin Coyne]
+
+Define UNASSIGNABLE_KEYS for RdfList.assign_nested_attributes... [Justin Coyne]
+
+Added RdfList.each [Justin Coyne]
+
+Cache the tail node in an RDFList [Justin Coyne]
+
+class_from_string should have an exit condition when the class can't be found
+[Justin Coyne]
+
+Add a warning letting you know you may have already registered this RDF.type
+[Justin Coyne]
+
+Rdf lists should only have one RDF.rest node [Justin Coyne]
+
+RDF lists should be able to accept nested attributes as a hash [Justin Coyne]
+
+Clean up YARD doc warnings [Justin Coyne]
+
+An rdf node should be able to set rdf:about [Justin Coyne]
+
+Remove RdfObject#get_values, it's inherited [Justin Coyne]
+
+v6.4.4 (2013-07-29)
+
+Bumping to version 6.4.4 [Jeremy Friesen]
+
+Use get_config_path to get the path for the predicate_mappings.yml
+[Justin Coyne]
+
+has_and_belongs_to_many can have more than 10 results. [Justin
+Coyne]
+
+Filters belongs_to associations by :class_name if specified [Simon
+Lamb]
+
+Don't reindex fedora-system objects in reindex_everything [Justin
+Coyne]
+
+Adding "An ActiveModel" shared behavior [Jeremy Friesen]
+
+Allow query parameter AF.reindex_everything [Jeremy Friesen]
+
+Updating CONTRIBUTING.md as per Hydra v6.0.0 [Jeremy Friesen]
+
+The example test should look for Base.exists?() rather than checking
+to see that an ObjectNotFound error is raised. [Justin Coyne]
+
+
+v6.4.3 (2013-07-16)
+
+class_from_string should find sibiling classes [Justin Coyne]
+
+Ensuring that AF::Base.find("") raises exception [Jeremy Friesen]
+
+Added ActiveFedora::SolrService.lazy_reify_solr_results to provide
+lazy (Ruby 1.9-compatible) reification alternative to .reify_solr_results.
+ActiveFedora::SolrService.reify_solr_results refactored, extracting single
+reification to .reify_solr_result. Supplied missing test for :load_from_solr
+option to .reify_solr_results [David Chandek-Stark]
+
+Adding mailmap for improving changelog generation [Jeremy Friesen]
+
+Tidying up how ActiveFedora::Base.exists? behaves [Jeremy Friesen]
+
+Tidying up hash key access of AF::Model [Jeremy Friesen]
+
+Fixed test for equality within OmDatastream.changed? [Justin Coyne]
+
+mock() and stub() are deprecated. Switched to double() [Justin
+Coyne]
+
+Remove all serialized foxml in favor of programmatic creation of
+fixtures in preperation for Fedora 4; One broken test revealed dealing with
+managed om datastreams [Chris Colvard]
+
+
+v6.4.2 (2013-07-10)
+
+Bumping version to 6.4.2 [Jeremy Friesen]
+
+In activerecord 4.0 the update() method accepts arguments. Conform
+to that interface. [Justin Coyne]
+
+
+v6.4.1 (2013-07-10)
+
+Change generator template to not use named argument 'name' [Justin
+Coyne]
+
+Infer the property on has_many. Fixes #142 [Justin Coyne]
+
+Added new_record? method to Rdf nodes [Justin Coyne]
+
+Test the behavior when the node can't be found [Justin Coyne]
+
+Rdf nested attributes should accept hashes [Justin Coyne]
+
+Added :type to ActiveFedora::QualifiedDublinCoreDatastream::DCTERMS.
+Presumably this field was excluded due to Object#type from Ruby 1.8. Since AF
+currently requires >= Ruby 1.9.3, it appears safe to add this DC 1.1 element.
+[David Chandek-Stark]
+
+Removed outdated comment that OmDatastream is just an alias for
+NokogiriDatastream [David Chandek-Stark]
+
+Added :path option to
+ActiveFedora::QualifiedDublinCoreDatastream#field in order to support, for
+example, mapping the term :dc_type to <dcterms:type> (:type is excluded from
+ActiveFedora::QualifiedDublinCoreDatastream::DCTERMS). Implementation simply
+adds :path (even if nil) to OM::XML::Term.new since initializer falls back to
+field name anyway. [David Chandek-Stark]
+
+Generate a datastream in addition to the model [Justin Coyne]
+
+Autoload classes in app/models/datastreams [Justin Coyne]
+
+Remove unnecessary require of 'active_fedora/base' in model template [Justin Coyne]
+
+
+6.4.0 (2013-07-01)
+
+Removing experimental designation, tidying-up the code [Adam Wead]
+
+Providing a YAMLAdaptor for Psych dependency [Jeremy Friesen]
+
+Increase startup wait to 90 seconds [Justin Coyne]
+
+Bump dependency to om 3.0.0 [Justin Coyne]
+
+Updating "active_fedora:model" rails generator [Jeremy Friesen]
+
+Deprecated AF::Base#update_indexed_attributes [Justin Coyne]
+
+Delegate all the array methods for RdfNode::TermProxy [Justin Coyne]
+
+Updating travis config as per Travis instruction [Jeremy Friesen]
+
+Added accepts_nested_attributes_for on RDFNodes [Justin Coyne]
+
+
+6.3.0 (2013-06-14)
+
+Added method: ActiveFedora::Base#required? [Justin Coyne]
+
+Removed redundant MacroReflection#klass method definition. Removed some excessive whitespace. [David Chandek-Stark]
+
+Updated doc comment for .count to reflect change made in commit 1cd412a817f5d7b5c2f2cbc304b915b7423c499d. [David Chandek-Stark]
+
+Adding CONTRIBUTORS and mailmap [Jeremy Friesen]
+
+Test against rails 4.0.0.rc2 [Justin Coyne]
+
+Backwards compatible change adding optional `args' param to ActiveFedora::SolrService.count, enabling the method to pass args through to ActiveFedora::SolrService.query. [David Chandek-Stark]
+
+habtm#delete saves between the before and after hook. [Justin Coyne]
+
+Added association delete callbacks [Justin Coyne]
+
+Fix nested_attributes handling [Mirosław Boruta]
+
+Startup wait in one spot [Justin Coyne]
+
+Remove unnecessary environment task [Chris Colvard]
+
+try to use a createdDate accessor on @inner_object if it is available [Chris Beer]
+
+use our test namespace rather than minting a new one in base_spec [Chris Beer]
+
+remove checks for fedora default values [Chris Beer]
+
+remove unnecessary test [Chris Beer]
+
+add support for rubydora's #uri method (for fcrepo4 compatbility) [Chris Beer]
+
+wrap property accessors in multi -> single valued wrappers [Chris Beer]
+
+Closes #84 [David Chandek-Stark]
+
+Modify or remove tests that check for DC datastreams; deprecate Datastreams#dc in favor of Datastreams#datastreams["DC"] [Chris Colvard]
+
+Using Rubydora's mint for assign_pid [Jeremy Friesen]
+
+fix #87 - use solr's !raw and sub-query feature to handle solr query escaping [Chris Beer]
+
+Reworking datastream id spec to be order agnostic [Jeremy Friesen]
+
+fix #87 - use solr _query_ to encapsulate solr queries for escaping [Chris Beer]
+
+Fix validations unit test to pass legitimately [Andrew Curley]
+
+
+
+6.2.0 (2013-06-05)
+
+Support for rails 4
+
+Extracted the behavior of resolving a class from a string (ActiveFedora.class_from_string).
+
+You can now pass parameters to accessor delegates.
+
+You can set the object state attribute (objState)
+
+Object state is indexed in solr
+
+Label is now implemented as a delegate
+
+Added Base.unique? to test whether a field is specified as being unique or not.
+
+Removed dependency on builder
+
+When searching for an rdf term in a complex graph, it should match on predicate and type. Previously
+  it was just matching on type.
+
+
+6.1.1
+Rdf nodes should check for an RDF.type when resolving classes
+Objects loaded via Solr should have datastream properties of same class
+
+6.1.0
+Give a list of classes that decend from ActiveFedora::Base
+ActiveFedora::Base.exists?(nil) now returns false. Fixes #56
+Removed extraneous solr configs.
+Deprecated get_values_from_datastream. Fixes #52
+Added ActiveFedora::Base.decendants
+Added some sensible defaults to the solrconfig. Removed comments about old fields.
+active_fedora_model solr field corrected to be single-valued.
+Fixed fields for solrconfig permissions.
+Deprecated Attributes#update_datastream_attributes.
+Delegate registry works with descendants of ActiveFedora::Base, not just direct subclasses. Fixes #59
+New ActiveFedora::Auditable mixin - provides access to Fedora audit trail.
+Fixed has and belongs to many, so it calls remove_relationship on the right object.
+Added jetty.yml to solr generator to overwrite the Blacklight jetty.yml.
+Upgrade to om 2.1.0.
+
+6.0.0
+New solr schema with descriptive field suffixes
+Added support for RDF lists
+RDF does not index terms by default
+count is now a scoped query.
+ActiveFedora::Base.reindex_everything
+RDF terms can store empty string
+Access properties by using hash notation.
+
+5.6.1
+Fixed delegating enumerable methods (join, [], each_with_index, to_a, etc) on an RdfNode::TermProxy
+
+5.6.0
+Upgrade to rubydora 1.3.0, which prevents unnecessary loading of datastream content.
+#35 fix passing :sort argument to ActiveFedora::Base#find
+Better support for ruby 2.0 (delegating inspect within RdfNode::TermProxy)
+
+5.5.2
+#25 When multiple has_many relationships share a predicate, the solr_query should use class_name to distinguish the sets.
+
+5.5.1
+#34 Allow passing RDF::URI to rdf_type
+
+5.5.0
+Added support for complex rdf structures.
+Changed RdfDatastream to_solr so that it uses the dsid as the solr prefix, not the datastream class name
+
+5.4.0
+HYDRA-850 Added finder methods like Base.where().limit().order().first
+Added Base.delete_all and Base.destroy_all
+Fixed RDF proxy delegates that weren't delegating 'is_a?'
+Better looking output for the Base#inspect method
+
+5.3.1
+Fixed delegating rdf terms as_json
+
+5.0.0
+Depend on solrizer 2.0.0 (for HYDRA-827 DO NOT index terms by default)
+Lazily initialize solr, so that the message goes into the log, not the console
+Depend on om 1.8.0
+Require Ruby >= 1.9.3
+Support for ISO 8601 date formats
+New before_delete callback available on ActiveFedora objects
+HYDRA-883: RDFDatastreams should handle Literals as object values
+Zero argument constructors for datastreams
+Deprecated in this version:
+  * FileManagment
+  * named relationships
+Removed in this version:
+  * ruby-fedora
+  * MetadataDatastream
+  * methods: .field, .add, .to_xml, .file_streams, .new_object=
+  # rcov dependency
+
+4.5.1
+Removes .rvmrc and Gemfile.lock from version control (devs should deal with these themselves)
+HYDRA-837: ActiveFedora::Datastreams#has_file_datastream should support :versionable argument (re-opened)
+HYDRA-838: Solr connection timeout is now 120 seconds
+
+4.5.0
+HYDRA-837: ActiveFedora::Datastreams#has_file_datastream should support :versionable argument
+implement per-class and per-instance defaults from rubydora 0.5.13
+bump to Rubydora 0.5.13
+add has_metadata :autocreate boolean that allows datastream to /not/ be created when a new object is saved
+add an after_rollback handler to update the SolrService when an object is rolled back
+
+4.4.1
+HYDRA-834 find(:all) should work on ActiveFedora::Base
+update AF to hide the deprecation warnings introduced in rubydora 0.5.11
+
+4.4.0
+Updated gem dependencies
+Deprecated #find_by_solr()
+Added compatibility with Rubydora 0.5.10
+HYDRA-833 find_by_conditions should accept conditions as a string or a hash
+HYDRA-696 ActiveModel::Dirty to track @ng_xml
+HYDRA-830: Parsing has_model_s for model name
+
+4.3.0
+Added the #delegate_to method for easier delegation of multiple terms to the same datastream.
+Deprecated AF::Base#file_streams
+Deprecated AF::Base#to_xml
+HYDRA-826 Added SimpleDatastream as a replacement for MetadataDatastream
+
+4.2.0
+Added Base.find_each which allows yielding of each result
+Added Base.find_in_batches which allows yielding of a chunk of solr results
+Added ActiveFedora::NtriplesRDFDatastream
+Rubydora to 0.5.9
+HYDRA-726 integration tests verify versionable attribute of datastreams
+HYDRA-811 allow setting a pid after object is initialized, but before it is saved
+find(:all) must use solr paramater qt=standard
+HYDRA-812 belongs_to should replace assertions, even if the asserted object is not found.
+HYDRA-814 add clone()
+HYDRA-815 give :type a default value (ActiveFedora::Datastream) for has_file_datastream
+HYDRA-816 Sharding works automatically if multiple connections are specified in fedora.yml
+HYDRA-818 Assign_pid should work correctly when the config is not sharded.
+
+4.1.0
+ActiveFedora::Base.find() now supports filtering by solr fields (boolean AND).
+* example:  ModsAsset.find('title_t' => 'Song of Fire and Ice','author_t'=>['Agatha Christie', 'Dr. Seuss']
+ActiveFedora::Base.find_with_conditions which is the replacement for ActiveFedora::Base.find_by_fields_by_solr (previously deprecated)
+YAML configurations are loaded through ERB, allowing reference to evaluated Ruby or environment variables
+When setting ng_xml= with a Nokogiri node, cast it to a new Nokogiri document
+
+4.0.0
+Removed deprecations
+  * allowing :fedora level in fedora.yml
+  * automatic includes of Relationships and FileMethods is removed
+Added sharding
+Added find_document which determines the correct model and then casts the object to that.
+Improved loading from solr
+RDF datastreams
+Replaced solr-ruby with rsolr. Note: remove any calls to .hits
+load_instance is now deprecated, replaced with find
+Find and load_instance_from_solr always instantiate the model defined in the object. 
+Run a stub :environment task in the fixture loading rake tasks (which is overridden by rails)
+Find raises ObjectNotFoundError when the object isn't found
+Removed dependency on solrizer-fedora
+Avoid unnecessary reload of RELS-EXT when typecasting
+HYDRA-754 Delegate discovery of config parameters to a separate module to allow for non-file-based configuration
+HYDRA-753 has_metadata should accept :versionable as part of the spec.
+HYDRA-755 Instantiate un-spec'ed datastreams in SolrDigitalObject
+HYDRA-758 Added ActiveFedora::Base.exists?
+Fixes for Ruby 1.9 compatibility
+HYDRA-741 Use fixture loader in repo:* rake tasks. Parameters changed to foxml and dir.
+rubydora to 0.5.7
+Lazily load solr config
+HYDRA-766 Model#classname_from_uri singularizes terms, but it shouldn't change them.
+HYDRA-767 Remove Model::DEFAULT_NS
+Upgrade Om to 1.6.0
+QualifiedDublinCore now extends immediately from NokogiriDatastream
+Deprecated MetadataDatastream
+HYDRA-755 Succeed with loading from solr even if the object was missing a declared datastream
+
+3.3.2
+HYDRA-745 No need to require :url be present on external datastreams
+Initialize relationships graph to empty array
+HYDRA-668 ActiveFedora models do not need to be immediate descendants of ActiveFedora::Base
+Fix for camel cased classes in classname from uri
+HYDRA-746 Speed up find() by not hitting solr first
+Added description for active_fedora:load_fixtures task
+HYDRA-748 Allow setting versionable via has_metadata
+
+
+3.3.1
+Allow explicit setting of predicate config.
+Check for appropriate content before saving a datastream
+rubydora to 0.5.2
+Support for changing base fixture directory path
+Removed unnecessary dependencies
+
+3.3.0
+A label set on an unsaved datastream should be saved in the repository
+Should be able to add checksumType parameter when creating a datastream
+Upgrade rubydora to 0.5.1 so we can do checksum verification
+Pass checksumVerification parameter to rubydora
+Allow you to override the class of file datastream that gets created by using ActiveFedora::Base.has_file_datastream
+Allow `predicate_mappings.yml` to specify explicit namespace prefixes to use instead of ns0, ns1, ..., nsN when serializing a `RelsExtDatastream`.
+HYDRA-737 fixes for tests failing under ree 1.8.7-2011.12
+
+3.2.2
+Rubydora 0.4.1
+Fixed bugs where updating datastream properties would overwrite content.
+HYDRA-661: Changed namespaces and names or rake tasks according to HYDRA-661 with the exception that harvest was renamed export
+
+3.2.1
+Load rake tasks.
+Rubydora 0.4.0
+Added fixture exporter
+
+3.2.0
+
+Deprecate ContentModel.pid_from_ruby_class, use Model.to_class_uri instead
+Added a count method
+HYDRA-731 running count on a has_many relationship returns zero unless the relationship has been loaded
+Added ActiveModel validations.
+Added callbacks on initialize, save, update, create, delete and find
+Added Base.create
+HYDRA-730 ActiveFedora isn't being initialized unless it is specified in the project Gemfile
+Don't create pids until save so that we don't cycle through pids we don't intend to save
+inspect method gives less information (more readable)
+Added an equality method
+Deprecate the automatic inclusion of datastream_collections (you should include this optional module in your models if you intend to use it)
+Deprecate the automatic inclusion of relationships (you should include this optional module in your models if you intend to use it)
+Deprecate the automatic inclusion of file_management (you should include this optional module in your models if you intend to use it)
+Disseminators have been added
+HYDRA-729 don't update xml datastreams unless they've changed
+Added adapt_to method to reduce number of round trips to fedora.
+ActiveFedora::Relationship is deprecated (was not being used)
+Rails 3.1 compatibility
+Ruby 1.9 compatibility
+
+3.1.6
+HYDRA-733 When serializing, MetadataDatastream does not load the existing content, so it can overwrite with blank
+
+3.1.5
+HYDRA-722 updating AF::Base#label= and then saving doesn't persist the change
+JettyWrapper to 1.2.0
+Upgrade to rspec2
+add_file_datastream should take a prefix option.
+Added assert_content_model method 
+Updates for ruby 1.9 compatibility
+
+3.1.4
+Update rubydora to 0.2.6
+Created a consistent implementation of Model.classname_from_uri
+
+3.1.3
+Set mimeType for all datastreams, default to text/xml
+Update rubydora to 0.2.4
+
+3.1.2
+correctly handling non-default pid_namespace (Benjamin Armintor)
+info uri support; rdf:type predicate compatibility with Fedora(Benjamin Armintor)
+more flexibility for initializing Rubydora (Michael B. Klein)
+NokogiriDatastream and RELS-EXT datastream set mimeType (Justin Coyne)
+
+
+3.1.1
+adds support for better handling of literal values in the RELS-EXT datastream.
+adds support for setting the controlGroup via a parameter to has_metadata.
+ability to pass a predicate as a parameter to AF::Base#relationships to get a list of the matching targets. This reads a bit better than ids_for_outbound().
+refactoring to support overriding certain sections (ContentModel) by consumers of active-fedora.
+
+3.1.0
+Based on rubydora for fedora interface
+RDF-xml for the relationships
+
+3.0.4
+
+HYDRA-663 -- Passing an empty string to a id setter should clear the belongs to association
+
+3.0.3
+
+Added HasAndBelongsToManyAssociation
+
+3.0.2
+
+YANKED
+
+
+3.0.1
+
+HYDRA-654 -- Fixed reification using has_model as the class instead of active_fedora_model
+
+3.0.0
+
+added belongs_to and has_many model relationships
+added nested_attributes_for
+Added dependency on rails > 3.0.0
+
+2.3.7 
+
+HYDRA-650 -- Fixed relationship inheritance (Rick Johnson)
+
+2.3.6
+
+YANKED
+Removed Bundler.require, which was causing odd dependency order resolving.
+
+2.3.5 
+
+YANKED
+branched so that trunk now require rails 3.
+Named finders HYDRA-541 (Rick Johnson)
+
+2.3.4
+
+moved dirty assignment to NokogiriDatastream#update_values; added test (Benjamin Armintor)
+Fixed HYDRA-590
+
+2.1.0
+
+HYDRUS-151: Base.update_datastream_attributes now relies on update_indexed_attributes instead of update_attributes.  This makes it easier to support non-javascript forms (and makes update_datastream_attributes worth using).
+
+2.0.4 
+
+collection_members_append now returns self.
+
+2.0.3
+
+HYHULL-25: tweaking ContentModel to ignore namespace
+
+2.0.2
+
+Fixed activeresource requirement in specfile
+Switched Bundler to rely on specfile for runtime dependencies.
+
+2.0.1
+
+Made Gemfile agnostic about Rails version (dependency on activeresource)
+
+2.0.0
+
+Upgraded to use solrizer 1.0.0, which uses RSolr instead of the outdated ruby-solr:
+
+  All solrize and extract methods now accept and return a _Hash_ rather than a Solr::Document
+  As part of this switch, *all field names are stored as Strings, not Symbols*. If you previously accessed something as solr_doc[:title_t], now you need to access it as solr_doc["title_t"]
+
+1.2.9
+Minor: Fixed Gemfile to require activeresource <3.0.0 NOT >3.0.0
+
+1.2.6
+
+Requires Solrizer 0.3.0 or higher
+
+HYDRA-274 Configurable Facets
+HYDRA-275 Update ActiveFedora to use Solrizer::XML::TermBasedSolrizer when indexing NokogiriDatastreams
+
+1.2.5 -- botched version release
+
+1.2.4
+
+Bug: Base.file_objects_append wasn't saving the child object after modifying its RELS-EXT
+
+1.2.3
+
+Major: Switched flow of relationship assertions for file objects. Now children assert isPartOf rather than parents asserting hasCollectionMember (see HYDRA-70 and HYDRA-71)
+
+New class method: ActiveFedora::Base#has_bidirectional_relationship creates relationship finder methods that search across bidirectional relationships (ie. finds all of the object's hasPart assertions as well as any objects pointing at it with isPartOf)
+
+Feature: Fedora::Connection now returns the Fedora error in any ServerError messages
+
+Documentation: Added RDoc code comments for experimental features from version 1.2
+
+Bug: MetadataDatastream.update_indexed_attributes doesn't get tripped up by attribute names wrapped in arrays (previously wrapping the symbol in an array would cause an error
+
+Bug: Applied some fixes to usage of URIs in SemanticNode
+
+1.2.2
+
+Misc bug fixes
+
+1.2.1
+
+TERMPORARY: removed solrizer from gem dependency list (cyclic reference breaks bundler) 
+
+1.2
+
+Now support using OM::XML::Terminologies in NokogiriDatastreams
+
+resolved #504 -- Allow SSL certificate client authentication for connections to Fedora 
+
+Added Experimental methods for has_datastream, named_datastream, and remove_relationship (contributed by Rick Johnson at Notre Dame)
+
+1.1.13
+
+MetadataDatastream.update_indexed_attributes was no longer marking the object dirty when triggered.  Resulted in changed datastreams not saving.  Fixed now.
+
+1.1.12
+
+* Minor fix to Base.get_values_from_datstream (wasn't returning default values when necessary)
+
+1.1.11
+
+* fix to update_index preventing double-metadata
+* now nokogiri datastreams initialize with default template.
+
+1.1.8
+
+solrizer fix to ensure that Nokogiri Datastreams are included in Base.to_solr
+
+1.1.7 
+
+Nokogiri Datastream support using Nokogiri and OM::XML.  Includes indexing of xml contents into solr based on accessors declared using OM::XML:Accessor module.
+You now have the option of calling has_metadata without passing in a block
+
+
+1.1.6
+
+Bug #959: Base.delete fails to delete objects from Solr even when ENABLE_SOLR_UPDATES == true
+
+1.1.5
+
+Feature: Base.save triggers Solrizer if you've required the gem in your app 
+
+1.1.2 
+
+Bug: Model.find_by_solr fails when you pass it an argument of :all
+Testing: Updated RSpec tests to run against localhost:8983 with Fedora 3.3 (instead of localhost:8080 with Fedora 3.2).  This means you can use a copy of hydra-jetty from http://github.com/hydraproject/hydra-jetty
+Testing: Reduced the amount of noise output to the shell during tests
+
+1.1.1 2010-03-22
+
+Bug: .load_objects wipes out datastream attributes from model-defined datastreams (ie. label and mimeType)
+
+1.1.0 2010-03-20
+
+Feature #822: Export & Ingest Fedora Objects
+
+1.0.9 2010-03-10
+
+!! Requires a new Solr schema by default.  We recommend updating solr with the schema.xml located at http://bitbucket.org/mediashelf/active_fedora/src/tip/solr/config/schema.xml.  If you want to keep using the old schema.xml, you must save the solr mappings file from http://bitbucket.org/mediashelf/active_fedora/src/tip/config/solr_mappings_af_0.1.yml as config/solr_mappings.yml in your application(s).
+
+Bundled ruby-fedora into active-fedora, removing external gem dependency
+
+Field names now map to solr field names using solr_mappings.yml.  You can put your own into RAILS_ROOT/config/solr_mappings.yml or rely on the default within the gem.  
+
+* Bug #552: Model relationship should be asserted using hasModel instead of conformsTo
+* Bug #614: Datastream should have mime_type accessors
+* Bug #692: Datastream.new should allow you to use :mime_type as an argument instead of :mimeType
+* Feature #430: YAML-based config files for Fedora Repository and SolrService
+* Feature #475: Ability to perform XUpdate-style partial updates of XML metadata
+* Feature #753: Configurable Solr Field Names
+* Feature #807: update_indexed_attributes should return the new index for any added values
+
+1.0.7 2009-09-18
+
+Performance improvements. Requires RubyFedora 1.0.7 (but will probably work with 1.0.5)
+
+Feature #489: Optimize datastreams method so that you only hit fedora and parse xml when you have to
+Bug #415: Base.save returns meaningful responses and yields exceptions when appropriate
+Bug #465: ActiveFedora::Base#fields method performance issues (tied to #489)
+
+
+1.0.6 2009-08-27
+
+Minor update.
+
+* ToDo #78: Relationship finders should return an array of ActiveFedora Objects
+* Bug #40: Fedora::Datastream should track control_group attribute correctly
+* Bug #425: SOLR_DOCUMENT_ID still hardcoded as "id" in a few spots
+* Bug #449: using has_metadata breaks support for custom pids
+
+1.0.5 2009-07-17
+
+Minor update.
+
+* Bug #387: Base.deserialize should mark all datastreams as not new
+* ToDo #389: Base.update_attributes and Base.update_indexed_attributes should accept :datastream limiter
+* Feature #388: Base.update_attributes and Base.update_indexed_attributes should support deleting fields
+
+1.0.4 2009-07-10
+
+!! Not Backwards Compatible with Fedora < 3.2.* !!
+
+* 1 major enhancement:
+  * ruby-fedora is now compatible with Fedora 3.2.1
+  
+Changelog:
+* ToDo #272: Datastream.new should accept a :prefix option for auto-incrementing DSIDs
+* ToDo #275: Update RubyFedora to work with Fedora 3.2 REST API
+* ToDo #308: ActiveFedora::FedoraObject.datatsreams should load label as well as pid and dsId
+* ToDo #318: Intelligent FileDatastream and FileAsset Management
+* Bug #312: Base.delete should delete the solr record as well as the Fedora Object
+* Feature #46: Improve OSX Fedora/Solr Disk Image
+* Feature #284: solr document id should by a config option instead of hard coded as "id"
+* Feature #307: ActiveFedora::Base should provide a label setter.
+* Feature #314: Relationship finder should provide a "response_format" option, default to format of "objects"
+* Feature #327: Option to turn off solr updates (assume that something else will update Solr for you)

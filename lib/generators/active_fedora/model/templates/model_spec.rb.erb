@@ -1,0 +1,23 @@
+# Generated via
+#  `rails generate active_fedora::model <%= class_name %>`
+require 'spec_helper'
+require 'active_fedora/test_support'
+
+describe <%= class_name %> do
+  it_behaves_like 'An ActiveModel'
+  include ActiveFedora::TestSupport
+  subject { <%= class_name %>.new }
+
+  describe "when persisted to fedora" do
+    before { subject.save! }
+    after { subject.destroy }
+    it 'should exist' do
+      <%= class_name %>.exists?(subject.pid).should be_true
+    end
+  end
+
+  it 'should have a descMetadata datastream' do
+    subject.descMetadata.should be_kind_of <%= options['descMetadata'] ? options['descMetadata'] : "#{class_name}Metadata" %>
+  end
+
+end

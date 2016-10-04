@@ -1,0 +1,28 @@
+# Generated via
+#  `rails generate active_fedora::model <%= class_name %>`
+class <%= class_name %> < ActiveFedora::Base
+  <% if options['descMetadata'] %>
+  has_metadata "descMetadata", type: <%= options['descMetadata'] %>
+  <% else %>
+  # Creating a #descMetadata method that returns the datastream. 
+  #
+  has_metadata "descMetadata", type: <%= class_name %>Metadata
+  <%- end -%>
+  <% if options['has_file_datastream'] %>
+  has_file_datastream "<%= options['has_file_datastream'] %>"
+  <% else %>
+  # Uncomment the following lines to add an #attachment method that is a
+  #   file_datastream:
+  #
+  # has_file_datastream "attachment"
+  <% end %>
+  # "If you need to add additional attributes to the SOLR document, define the
+  # #to_solr method and make sure to use super"
+  #
+  # def to_solr(solr_document={}, options={})
+  #   super(solr_document, options)
+  #   solr_document["my_attribute_s"] = my_attribute
+  #   return solr_document
+  # end
+
+end
